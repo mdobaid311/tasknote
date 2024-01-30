@@ -15,7 +15,17 @@ export const Task = () => {
     // let [taskList, setTaskList] = useState<Tasktype[]>([]);
 
 
+let [tasks, setTasks] = useState([]);
+    
+    function getTasksFromStorage() {
+        const tasksFromStorage = localStorage.getItem("taskList");
+      setTasks(tasksFromStorage)
+    }
 
+useEffect(()=>{
+    getTasksFromStorage()
+},[])
+    
 
 
 
@@ -41,7 +51,7 @@ export const Task = () => {
             <div className="tasks-container">
                 <UserDetails />
                 <AddTask />
-                {/* <ShowTask tasklist={taskList} setTaskList={setTaskList} task={task} setTask={setTask} /> */}
+                {/* <ShowTasks tasks={tasks} /> */}
             </div>
         </div>
     )
